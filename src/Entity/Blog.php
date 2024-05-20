@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\BlogRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\DBAL\Types\Types;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\PersistentCollection;
 
@@ -17,6 +18,8 @@ class Blog
     #[ORM\Column]
     private ?int $id = null;
 
+    // добавление валидации на сервер
+    #[Assert\NotBlank(message: 'не указан заголовок')]
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $title = null;
 

@@ -21,7 +21,7 @@ class BlogType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('title')
+            ->add('title', TextType::class, ['required' => true])
             ->add('text')
             ->add('description')
             ->add('category', EntityType::class, [
@@ -43,6 +43,8 @@ class BlogType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Blog::class,
+            // отключение защиты для формы
+            // 'csrf' => false
         ]);
     }
 }
